@@ -6,21 +6,21 @@ use App\Services\Utility\ClassGeneratorService;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Command\Command as ConsoleCommand;
 
-class MakeService extends Command
+class MakeRepository extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'make:service {service : Name of service}';
+    protected $signature = 'make:repository {repository : Name of repository}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command to generate service class.';
+    protected $description = 'Command to generate repository class.';
 
     /**
      * Execute the console command.
@@ -29,9 +29,11 @@ class MakeService extends Command
      */
     public function handle(): int
     {
-        $serviceName = $this->argument('service');
+        $repositoryName = $this->argument('repository');
 
-        $generatorService = (new ClassGeneratorService)->setFileName($serviceName);
+        $generatorService = (new ClassGeneratorService)
+            ->setType('repository')
+            ->setFileName($repositoryName);
 
         if ($exists = file_exists($generatorService->getFullDesignatedPath())) {
             $question = 'The class is already exist. Are you sure want to override the existing class?';

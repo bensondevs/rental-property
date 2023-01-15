@@ -11,21 +11,21 @@ class ApiResponseService
      *
      * @var int|null
      */
-    private $statusCode = 200;
+    private ?int $statusCode = 200;
 
     /**
      * Message of the API request response container property.
      *
      * @var string
      */
-    private $message;
+    private string $message;
 
     /**
      * Additional extra-properties of the response container.
      *
      * @var array
      */
-    private $extras = [];
+    private array $extras = [];
 
 	/**
 	 * Create New Service Instance
@@ -112,7 +112,7 @@ class ApiResponseService
     public function getJsonProperties(): array
     {
         return array_merge([
-            'status' => ($status = $this->getStatusCode()),
+            'status' => $this->getStatusCode(),
             'message' => $this->getMessage(),
         ], $this->extras);
     }

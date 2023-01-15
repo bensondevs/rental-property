@@ -6,9 +6,10 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "bensampo/laravel-enum": "^6.2",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.19",
-        "laravel/sanctum": "^3.0",
+        "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.7"
     },
     "require-dev": {
@@ -28,6 +29,15 @@
         }
     },
     "autoload-dev": {
+        "files": [
+            "app/Helpers/Helpers.php",
+            "app/Helpers/UrlHelpers.php",
+            "app/Helpers/HtmlHelpers.php",
+            "app/Helpers/FileHelpers.php",
+            "app/Helpers/StringHelpers.php",
+            "app/Helpers/DateTimeHelpers.php",
+            "app/Helpers/EncryptionHelpers.php"
+        ],
         "psr-4": {
             "Tests\\": "tests/"
         }
